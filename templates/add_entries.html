@@ -1,0 +1,27 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css" />
+</head>
+<a href="{{ url_for('show_entries') }}" >Entry message </a>
+<form action ="{{ url_for('add_entry') }}" method="post">
+<p>Name: <input type="text" name="name"></p>
+    <input type="radio" name="school" value="element school">Element School<br>
+    <input type="radio" name="school" value="middle school">Middle School<br>
+    <input type="radio" name="school" value="high school">High School<br>
+    <select name="classes" multiple>
+        <option value="C++">C++</option>
+        <option value="Java">Java</option>
+        <option value="Python">Python</option>
+        <option value="Ruby">Ruby</option>
+    </select>
+   <p>Address: <input type="text" name="address"></p>
+   <p>Email: <input type="text" name="email"></p>
+    <p>Phone number: <input type="text" name="phone_number"></p>
+    <p>City: <input type="text" name="city"></p>
+    <p>Text Message: <textarea  name="text" rows="4" cols="20"></textarea></p>
+<p>
+     <input type="submit" value="submit">
+    </p>
+</form>
+
+</html>

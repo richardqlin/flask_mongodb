@@ -1,0 +1,30 @@
+<head>
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css" />
+</head>
+
+<body>
+
+<table border="1">
+    {% for d in entries %}
+
+    <tr>
+        <h1><td>Name: {{ d.name }}</td>
+            <td>School: {{ d.school }}</td>
+            <td>Class: {{ d.classes }}</td>
+        <td>Address: {{ d.address }}</td>
+            <td>Email: {{ d.email }}</td>
+            <td>Phone Number: {{ d.phone_number }}</td>
+            <td>City: {{ d.city }}</td>
+            <td>Test Message: {{ d.text }}</td>
+            <td>{{ d.date_time }}</td>
+
+        </h1>
+
+    </tr>
+
+     {% else %}
+  <p>No Data!</p>
+    {% endfor %}
+</table><h1>
+<a href="{{ url_for('home') }}" >link to home page</a></h1>
+</body>
