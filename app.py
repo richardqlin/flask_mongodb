@@ -88,6 +88,37 @@ def update_entry():
         return redirect('show')
     return render_template('update_entry.html')
 
+@app.route('/edit/<string:id>', methods=['GET','POST'])
+def edit_entry(id):
+    print(id)
+    if request.method=='POST':
+
+        #find_name=request.form.get('id')
+        #print('find=',find_name)
+        name=request.form.get('name')
+        school=request.form.get('school')
+        classes=request.form.get('class')
+        address=request.form.get('address')
+        email = request.form.get('email')
+        phone_number = request.form.get('phone_number')
+        city = request.form.get('city')
+        text=request.form.get('text')
+        arg={'name':id}
+        doc = {
+            'name': name,
+            'school':school,
+            'classes':classes,
+            'address': address,
+            'email': email,
+            'phone_number': phone_number,
+            'city': city,
+            'text':text,
+            'date_time':datetime.now()
+        }
+        Database.update_one(arg,doc)
+        #flash('You were successfully logged in')
+        return redirect('show')
+    return render_template('edit_entry.html',id=id)
 
 @app.route('/delete')
 def delete_all():
@@ -114,7 +145,7 @@ def home():
 
 
     #user = request.args.get('user')
-    return render_template ('base.html',name=users)
+    return render_template ('menu.html',name=users)
 
 
 @app.route('/login',methods=['GET','POST'])
@@ -130,6 +161,8 @@ def login():
         state = request.form.get('state')
         print('redirecting...',user)
         return redirect(url_for('home',user=user,age=age,city=city,state=state))
+
+
 
 
 if __name__=='__main__':

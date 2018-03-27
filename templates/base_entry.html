@@ -1,18 +1,15 @@
-<head>
-    <link rel="stylesheet" type="text/css" href="../static/css/style.css" />
-</head>
+
 
 <body>
-
+{% block content %}
 <table border="1">
     {% for d in entries %}
-
+<h1>Name: <a href="{{ url_for('edit_entry',id= d.name )}} ">{{d.name }}</a> </h1>
     <tr>
         <h1><td>Name: {{ d.name }}</td>
             <td>School: {{ d.school }}</td>
             <td>Class: {{ d.classes }}</td>
         <td>Address: {{ d.address }}</td>
-            <td>Email: {{ d.email }}</td>
             <td>Phone Number: {{ d.phone_number }}</td>
             <td>City: {{ d.city }}</td>
             <td>Test Message: {{ d.text }}</td>
@@ -27,4 +24,5 @@
     {% endfor %}
 </table><h1>
 <a href="{{ url_for('home') }}" >link to home page</a></h1>
+ {% endblock %}
 </body>
