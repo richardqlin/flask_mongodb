@@ -49,15 +49,19 @@ def add_entry():
         return redirect('show')
     return render_template('add_entries.html')
 
-@app.route('/remove', methods=['GET','POST'] )
-def remove_entry():
+@app.route('/remove/<string:id>', methods=['GET','POST'] )
+def remove_entry(id):
+
     if request.method=="POST":
-        name=request.form.get('name')
-        doc={'name':name}
+        #name=request.form.get('name')
+        print(id)
+        doc={'name':id}
         Database.delete_one(doc)
 
         return redirect('show')
-    return render_template('remove_entry.html')
+    #if request.method=='GET':
+    #entries = Database.get_records()
+    return render_template('remove_entry.html',id=id)
 
 @app.route('/update', methods=['GET','POST'])
 def update_entry():
@@ -92,9 +96,6 @@ def update_entry():
 def edit_entry(id):
     print(id)
     if request.method=='POST':
-
-        #find_name=request.form.get('id')
-        #print('find=',find_name)
         name=request.form.get('name')
         school=request.form.get('school')
         classes=request.form.get('class')
